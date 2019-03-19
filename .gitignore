@@ -1,0 +1,7 @@
+public
+.project
+node_modules
+package-lock.json
+dist/
+npm-debug.log
+doc/
