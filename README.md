@@ -22,6 +22,11 @@ npm install
 
 #调试
 weex debug
+
+
+# android
+weex platform add android
+
 ```
 
 QA
