@@ -12,4 +12,4 @@ dist/
 release/
 doc/
 platforms/android/.gradle/
-platforms/android/app/build/intermediates/
+platforms/android/app/build/

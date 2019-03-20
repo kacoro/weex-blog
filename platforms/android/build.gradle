@@ -35,7 +35,7 @@ task clean(type: Delete) {
 subprojects {
     ext {
         compileSdkVersion=27
-        buildToolsVersion="26.0.0"
+        buildToolsVersion="28.0.3"
         minSdkVersion=14
         appMinSdkVersion=15
         targetSdkVersion=27
