@@ -4,7 +4,7 @@
             "outputFile": "E:\\project\\kacoro\\weex-blog\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\kacoro\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\2594d48f07355cd8e556ae17323d36a7\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\kacoro\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\cf118fa5c55457c05c4afc901128a093\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\kacoro\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\dc065de3cd4c454f35af1d1fa46c3c1b\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\kacoro\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\f57dfaf602cbf57565d2efb33f8d7c25\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

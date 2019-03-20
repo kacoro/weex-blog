@@ -11,3 +11,5 @@ node_modules
 dist/
 release/
 doc/
+platforms/android/.gradle/
+platforms/android/app/build/intermediates/

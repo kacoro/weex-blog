@@ -72,14 +72,6 @@
         <meta-data
             android:name="android.support.VERSION"
             android:value="26.1.0" />
-
-        <activity
-            android:name="com.taobao.weex.devtools.toolbox.PerformanceActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Performance" >
-        </activity>
-
         <meta-data
             android:name="android.arch.lifecycle.VERSION"
             android:value="27.0.0-SNAPSHOT" />

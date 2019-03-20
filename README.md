@@ -23,6 +23,7 @@ npm install
 #调试
 weex debug
 
+npm run serve
 
 # android
 weex platform add android
@@ -33,3 +34,5 @@ QA
 ```
 1、无法调试，
 A:可能是由于本机有多个ip，我是因为安装了虚拟机，默认的ip与手机的ip网段不一致。禁用虚拟机的适配后解决，不想改config的ip
+
+2、安卓无法打包 解决 [参见](https://www.cnblogs.com/chaichai/p/10087673.html)

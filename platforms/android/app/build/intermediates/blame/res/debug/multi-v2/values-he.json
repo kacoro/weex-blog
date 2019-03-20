@@ -4,7 +4,7 @@
             "outputFile": "E:\\project\\kacoro\\weex-blog\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-he\\values-he.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\kacoro\\.gradle\\caches\\transforms-1\\files-1.1\\zxing-android-embedded-3.4.0.aar\\95d4308a6b6ebbd46a9571afb331e48c\\res\\values-he\\values-he.xml",
+                    "source": "C:\\Users\\kacoro\\.gradle\\caches\\transforms-1\\files-1.1\\zxing-android-embedded-3.4.0.aar\\ff0145547d9c87329fb29306f984f8ba\\res\\values-he\\values-he.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
