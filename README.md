@@ -10,6 +10,7 @@
 * 新增变量ANDROID_HOME 变量值 C:\Users\yourUserName\AppData\Local\Android\Sdk
 * 系统环境变量path C:\Users\yourUserName\AppData\Local\Android\Sdk\tools C:\Users\[yourUserName\AppData\Local\Android\Sdk\platform-tools
 * /c/Users/kacoro/AppData/Roaming/npm/
+* android studio v3.3.2 gradle v4.10.1 sdk v28.0.3
 
 * 查看安装过的包
 ``` bash
@@ -27,12 +28,18 @@ npm run serve
 
 # android
 weex platform add android
-
+npm run android
+npm run pack:android
 ```
 
 QA
-```
+
 1、无法调试，
 A:可能是由于本机有多个ip，我是因为安装了虚拟机，默认的ip与手机的ip网段不一致。禁用虚拟机的适配后解决，不想改config的ip
 
-2、安卓无法打包 解决 [参见](https://www.cnblogs.com/chaichai/p/10087673.html)
+2、安卓无法正常调试打包，基于android studio v3.3.2 gradle v4.10.1 sdk v28.0.3 解决 [参见](https://www.cnblogs.com/chaichai/p/10087673.html)
+
+3、安装完后 npm run android 居然支持热更新了。先在android studio启动一个模拟器后，android studio关闭
+
+4、npm run pack:android 无法打包，comileReleaseJavaWithJavac报错
+A：系统没有配置好javac，[下载](https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-windows-x64.exe?AuthParam=1553078333_fe4ae5e2ccad0c6e5ba406517c35137e)

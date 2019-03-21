@@ -13,3 +13,4 @@ release/
 doc/
 platforms/android/.gradle/
 platforms/android/app/build/
+platforms/android/build/
