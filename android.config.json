@@ -1,6 +1,6 @@
 {
-  "AppName":"WeexApp",
-  "AppId":"com.weex.app",
-  "SplashText":"Hello\nWeex",
+  "AppName":"Kacoro",
+  "AppId":"com.kacoro.app",
+  "SplashText":"Kacoro\nApp",
   "WeexBundle":"index.js"
 }

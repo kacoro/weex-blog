@@ -6,7 +6,7 @@ android {
     buildToolsVersion project.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.weex.app"
+        applicationId "com.kacoro.app"
         minSdkVersion project.appMinSdkVersion
         targetSdkVersion project.targetSdkVersion
         versionCode 1
@@ -22,7 +22,7 @@ android {
     }
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "weex-app.apk"
+            outputFileName = "kacoro-app.apk"
         }
     }
     signingConfigs {

@@ -1,7 +1,0 @@
-#Wed Mar 20 17:50:56 CST 2019
-base.0=E\:\\project\\kacoro\\weex-blog\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
-path.1=classes2.dex
-renamed.1=classes2.dex
-path.0=classes.dex
-renamed.0=classes.dex
-base.1=E\:\\project\\kacoro\\weex-blog\\platforms\\android\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out

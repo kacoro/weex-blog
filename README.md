@@ -43,3 +43,6 @@ A:可能是由于本机有多个ip，我是因为安装了虚拟机，默认的i
 
 4、npm run pack:android 无法打包，comileReleaseJavaWithJavac报错
 A：系统没有配置好javac，[下载](https://download.oracle.com/otn-pub/java/jdk/8u201-b09/42970487e3af4f5aa5bca3f542482c60/jdk-8u201-windows-x64.exe?AuthParam=1553078333_fe4ae5e2ccad0c6e5ba406517c35137e)
+
+5、npm run pack:android 在release生成的apk无法安装，提示，但是debug下的apk可以安装 测试机：魅族note5
+A:有可能是[签名]()问题，也有可能是[加固](http://jiagu.360.cn/#/global/download)问题，注意要卸载软件后。安装失败也有可能是其他问题，可能需要使用[abd](https://www.jianshu.com/p/f69dc25c56f2)
