@@ -30,6 +30,10 @@ npm run serve
 weex platform add android
 npm run android
 npm run pack:android
+
+#ios
+npm run ios
+npm run pack:ios
 ```
 
 QA
@@ -46,3 +50,21 @@ A：系统没有配置好javac，[下载](https://download.oracle.com/otn-pub/ja
 
 5、npm run pack:android 在release生成的apk无法安装，提示，但是debug下的apk可以安装 测试机：魅族note5
 A:有可能是[签名]()问题，也有可能是[加固](http://jiagu.360.cn/#/global/download)问题，注意要卸载软件后。安装失败也有可能是其他问题，可能需要使用[abd](https://www.jianshu.com/p/f69dc25c56f2)
+
+6、mac安装时无权限，
+A：sudo chmod 777 /usr/local/lib/node_modules
+
+7、xcode
+
+```
+sudo gem install cocoapods
+
+cd pod install
+
+pod install
+```
+
+8、无法直接打包ios,可以在xcode打包
+```
+Command failed: xcodebuild -workspace WeexDemo.xcworkspace -scheme WeexDemo -configuration PROD -sdk iphoneos -derivedDataPath build clean build
+```

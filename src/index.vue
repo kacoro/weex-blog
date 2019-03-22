@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <image :src="logo" class="logo" />
-    <text class="greeting">The environment is ready33343!</text>
+    <text class="greeting">kacoro!</text>
     <HelloWorld/>
   </div>
 </template>
