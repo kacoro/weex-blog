@@ -2,7 +2,7 @@
    "AppName":"Kacoro",
    "Version":"0.1",
    "BuildVersion":"0.1.0",
-   "AppId":"com.alibaba.weex",
+   "AppId":"com.kacoro.blog",
    "CodeSign":"",
    "Profile":"",
    "WeexBundle":"index.js"

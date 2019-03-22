@@ -32,6 +32,8 @@ npm run android
 npm run pack:android
 
 #ios
+weex platform add
+
 npm run ios
 npm run pack:ios
 ```
@@ -59,7 +61,7 @@ A：sudo chmod 777 /usr/local/lib/node_modules
 ```
 sudo gem install cocoapods
 
-cd pod install
+cd platforms/ios
 
 pod install
 ```
