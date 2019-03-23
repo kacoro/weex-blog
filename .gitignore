@@ -16,3 +16,4 @@ platforms/android/app/build/
 platforms/android/build/
 platforms/ios/build/
 platforms/ios/Pods/
+platforms/ios/WeexDemo.xcworkspace
