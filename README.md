@@ -32,7 +32,7 @@ npm run android
 npm run pack:android
 
 #ios
-weex platform add
+weex platform add ios
 
 npm run ios
 npm run pack:ios
@@ -66,7 +66,9 @@ cd platforms/ios
 pod install
 ```
 
-8、无法直接打包ios,可以在xcode打包
+8、无法直接打包ios,可以在xcode打包,由于还不会正确配置ios.config.json "CodeSign":""，"Profile":"",在xcode直接真机调试，打包完成。
 ```
 Command failed: xcodebuild -workspace WeexDemo.xcworkspace -scheme WeexDemo -configuration PROD -sdk iphoneos -derivedDataPath build clean build
+
+cp dist/ platforms/ios/bundlejs/
 ```
