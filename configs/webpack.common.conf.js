@@ -55,8 +55,8 @@ new Vue(App)
 // Retrieve entry file mappings by function recursion
 const getEntryFile = (dir) => {
   dir = dir || config.sourceDir;
-  const entries = glob.sync(`${dir}/${config.entryFilter}`, config.entryFilterOptions);
-  entries.forEach(entry => {
+  const enrtys = glob.sync(`${dir}/${config.entryFilter}`, config.entryFilterOptions);
+  enrtys.forEach(entry => {
     const extname = path.extname(entry);
     const basename = entry.replace(`${dir}/`, '').replace(extname, '');
     const templatePathForWeb = path.join(vueWebTemp, basename + '.web.js');
@@ -88,17 +88,6 @@ const useEslint = config.dev.useEslint ? [createLintingRule()] : []
  * Plugins for webpack configuration.
  */
 const plugins = [
-  /**
-   * Plugin: webpack.DefinePlugin
-   * Description: The DefinePlugin allows you to create global constants which can be configured at compile time. 
-   *
-   * See: https://webpack.js.org/plugins/define-plugin/
-   */
-  new webpack.DefinePlugin({
-    'process.env': {
-      'NODE_ENV': config.dev.env
-    }
-  }),
   /*
    * Plugin: BannerPlugin
    * Description: Adds a banner to the top of each generated chunk.
@@ -113,12 +102,10 @@ const plugins = [
 
 // Config for compile jsbundle for web.
 const webConfig = {
-  entry: Object.assign(webEntry, {
-    'vendor': [path.resolve('node_modules/phantom-limb/index.js')]
-  }),
+  entry: webEntry,
   output: {
-    path: helper.rootNode('./dist'),
-    filename: '[name].web.js'
+    path: helper.rootNode('.'),
+    filename: 'dist/[name].web.js'
   },
   /**
    * Options affecting the resolving of modules.
@@ -194,7 +181,7 @@ const webConfig = {
 const weexConfig = {
   entry: weexEntry,
   output: {
-    path: path.join(__dirname, '../dist'),
+    path: helper.rootNode('./dist'),
     filename: '[name].js'
   },
   /**
@@ -224,7 +211,7 @@ const weexConfig = {
       {
         test: /\.vue(\?[^?]+)?$/,
         use: [{
-          loader: 'weex-loader',
+          loader: 'weex-vue-loader',
           options: vueLoaderConfig({useVue: false})
         }],
         exclude: config.excludeModuleReg

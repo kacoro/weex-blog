@@ -8,26 +8,26 @@ const config = {
   pluginFilePath: 'plugins/plugins.js',
   // router
   // common
-  sourceDir: 'src',
+  sourceDir: process.env.NODE_SOURCE_DIR || 'src',
   templateDir: '.temp',
   entryFilePath: 'entry.js',
   // Module exclude from compile process
   excludeModuleReg: /node_modules(?!(\/|\\).*(weex).*)/,
   // Filter for entry files
   // see: https://www.npmjs.com/package/glob#glob-primer
-  entryFilter: '**/*.vue',
+  entryFilter: process.env.NODE_ENTRY_RILTER || 'pages/**/entry.vue',
   // Options for the filter
   // see: https://www.npmjs.com/package/glob#options
-  entryFilterOptions: {},
+  entryFilterOptions: process.env.NODE_ENTRY_RILTER_OPTIONS || {},
   dev: {
     // Various Dev Server settings
     contentBase: ROOT,
     host: ip,
     port: 8081,
     historyApiFallback: true,
-    open: true,
+    open: !process.env.NODE_NOT_OPEN,
     watchContentBase: true,
-    openPage: 'web/preview.html',
+    openPage: process.env.NODE_OPEN_PAGE || 'index.html',
     watchOptions: {
       ignored: /node_modules/,
       aggregateTimeout: 300,
@@ -56,26 +56,18 @@ const config = {
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
-    proxyTable: {},
+    proxyTable: {
+      "/api": {
+        target: "http://127.0.0.1:7001/api/",
+        changeOrigin: true,
+        secure: false
+      }
+    },
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
     htmlOptions: {
-      devScripts: `
-        <script>
-          window.addEventListener('load', function () {
-            var is_touch_device = function () {
-              return 'ontouchstart' in window // works on most browsers
-                  || 'onmsgesturechange' in window; // works on ie10
-            };
-            if(!is_touch_device()) {
-              if (window.parent === window) { // not in iframe.
-                window.phantomLimb.stop()
-              }
-            }
-          })
-        </script>
-        `
+      devScripts: ''
     }
   },
   test: {

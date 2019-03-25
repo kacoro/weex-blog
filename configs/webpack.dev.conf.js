@@ -22,50 +22,19 @@ const helper = require('./helper');
  * Modify the url that will open on the browser.
  * @param {Array} entry 
  */
-const postMessageToOpenPage =  (entry) => {
+const postMessageToOpenPage =  (entry, ip, port) => {
   let entrys = Object.keys(entry);
   let openpage = config.dev.openPage;
   // exclude vendor entry.
   entrys = entrys.filter(entry => entry !== 'vendor' );
-  if(entrys.indexOf('index') > -1) {
-    openpage += `?page=index.js`;
-  }
-  else {
-    openpage += `?page=${entrys[0]}.js`;
-  }
-  if(entrys.length > 1) {
-    openpage += `&entrys=${entrys.join('|')}`
-  }
+  let entryIndex = 0;
+  entrys.forEach((entry, index) => {
+    if (entry.includes('index')) {
+      entryIndex = index
+    }
+  });
+  openpage += `?_wx_tpl=http://${ip}:${port}/dist/${entrys[entryIndex]}.js`;
   return openpage;
-}
-
-const openPage = postMessageToOpenPage(commonConfig[0].entry);
-
-// hotreload server for playground App
-const wsServer = require('./hotreload');
-let wsTempServer = null
-
-/**
- * Generate multiple entrys
- * @param {Array} entry 
- */
-const generateHtmlWebpackPlugin = (entry) => {
-  let entrys = Object.keys(entry);
-  // exclude vendor entry.
-  entrys = entrys.filter(entry => entry !== 'vendor' );
-  const htmlPlugin = entrys.map(name => {
-    return new HtmlWebpackPlugin({
-      multihtmlCache: true,
-      filename: name + '.html',
-      template: helper.rootNode(`web/index.html`),
-      isDevServer: true,
-      chunksSortMode: 'dependency',
-      inject: true,
-      devScripts: config.dev.htmlOptions.devScripts,
-      chunks: ['vendor', name]
-    })
-  })
-  return htmlPlugin;
 }
 
 /**
@@ -112,7 +81,16 @@ const devWebpackConfig = webpackMerge(commonConfig[0], {
      *
      * See: https://github.com/ampedandwired/html-webpack-plugin
      */
-    ...generateHtmlWebpackPlugin(commonConfig[0].entry),
+    new HtmlWebpackPlugin({
+      multihtmlCache: true,
+      filename: 'index.html',
+      template: helper.rootNode(`web/index.html`),
+      isDevServer: true,
+      chunksSortMode: 'dependency',
+      inject: true,
+      devScripts: config.dev.htmlOptions.devScripts,
+      chunks: ['vendor']
+    }),
     /*
      * Plugin: ScriptExtHtmlWebpackPlugin
      * Description: Enhances html-webpack-plugin functionality
@@ -147,7 +125,7 @@ const devWebpackConfig = webpackMerge(commonConfig[0], {
     : false,
     proxy: config.dev.proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
-    openPage: encodeURI(openPage),
+    // openPage: encodeURI(openPage),
     watchOptions: config.dev.watchOptions
   }
 });
@@ -163,8 +141,6 @@ const weexConfig = webpackMerge(commonConfig[1], {
 webpack(weexConfig, (err, stats) => {
   if (err) {
     console.err('COMPILE ERROR:', err.stack)
-  } else {
-    wsTempServer && wsTempServer.sendSocketMessage()
   }
 })
 
@@ -179,7 +155,6 @@ module.exports = new Promise((resolve, reject) => {
       // add port to devServer config
       devWebpackConfig.devServer.port = port
       devWebpackConfig.devServer.public = `${ip}:${port}`
-      devWebpackConfig.devServer.openPage += `&wsport=${port+1}`
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
@@ -191,7 +166,8 @@ module.exports = new Promise((resolve, reject) => {
         ? utils.createNotifierCallback()
         : undefined
       }))
-      wsTempServer = new wsServer(port+1)
+      const openPage = postMessageToOpenPage(commonConfig[0].entry, ip, port);
+      devWebpackConfig.devServer.openPage = encodeURI(openPage)
       resolve(devWebpackConfig)
     }
   })
